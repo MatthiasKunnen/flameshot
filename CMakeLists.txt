@@ -133,7 +133,7 @@ else()
   FetchContent_Declare(
       singleApplication
       GIT_REPOSITORY https://github.com/itay-grudev/SingleApplication.git
-      GIT_TAG v3.5.2
+      GIT_TAG 494772e98cef0aa88124f154feb575cc60b08b38 # tag v3.5.2
   )
   FetchContent_MakeAvailable(SingleApplication)
   set(QTSINGLEAPPLICATION_LIBRARY SingleApplication::SingleApplication)
