@@ -25,6 +25,8 @@ public:
     void setToolWidget(QWidget* weight);
     void clearToolWidget();
     void pushWidget(QWidget* widget);
+    void hide();
+    void show();
     void fillCaptureTools(
       const QList<QPointer<CaptureTool>>& captureToolObjectsHistory);
     void setActiveLayer(int index);
@@ -38,8 +40,6 @@ signals:
 
 public slots:
     void toggle();
-    void hide();
-    void show();
     void slotButtonDelete(bool clicked);
     void onCurrentRowChanged(int currentRow);
 
