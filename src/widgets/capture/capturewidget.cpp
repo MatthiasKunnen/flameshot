@@ -155,7 +155,11 @@ CaptureWidget::CaptureWidget(const CaptureRequest& req,
 #if !defined(FLAMESHOT_DEBUG_CAPTURE)
         setWindowFlags(Qt::BypassWindowManagerHint | Qt::WindowStaysOnTopHint |
                        Qt::FramelessWindowHint | Qt::Tool);
-        resize(pixmap().size());
+        // Fix for Qt6 dual monitor offset: position widget to cover entire
+        // desktop
+        QRect desktopGeom = ScreenGrabber().desktopGeometry();
+        move(desktopGeom.topLeft());
+        resize(desktopGeom.size());
 #endif
 #endif
     }
@@ -306,7 +310,9 @@ void CaptureWidget::initButtons()
         for (auto* buttonList : { &allButtonTypes, &visibleButtonTypes }) {
             buttonList->removeOne(CaptureTool::TYPE_SAVE);
             buttonList->removeOne(CaptureTool::TYPE_COPY);
+#ifdef ENABLE_IMGUR
             buttonList->removeOne(CaptureTool::TYPE_IMAGEUPLOADER);
+#endif
             buttonList->removeOne(CaptureTool::TYPE_OPEN_APP);
             buttonList->removeOne(CaptureTool::TYPE_PIN);
         }
@@ -411,6 +417,13 @@ void CaptureWidget::onGridSizeChanged(int size)
     repaint();
 }
 
+void CaptureWidget::startColorGrab()
+{
+    if (m_sidePanel) {
+        m_sidePanel->startColorGrab();
+    }
+}
+
 void CaptureWidget::showxywh()
 {
     m_xywhDisplay = true;
@@ -475,7 +488,6 @@ void CaptureWidget::initQuitPrompt()
 {
     m_quitPrompt = new QMessageBox;
     makeChild(m_quitPrompt);
-    m_quitPrompt->hide();
 
     QString baseSheet = "QDialog { background-color: %1; }"
                         "QLabel, QCheckBox { color: %2 }"
@@ -492,6 +504,15 @@ void CaptureWidget::initQuitPrompt()
 
     auto* check = new QCheckBox(tr("Do not show this again"));
     m_quitPrompt->setCheckBox(check);
+
+    // Call show() first, otherwise the correct geometry cannot be fetched
+    // for centering the window on the screen
+    m_quitPrompt->show();
+    QRect position = m_quitPrompt->frameGeometry();
+    QScreen* currentScreen = QGuiAppCurrentScreen().currentScreen();
+    position.moveCenter(currentScreen->availableGeometry().center());
+    m_quitPrompt->move(position.topLeft());
+    m_quitPrompt->hide();
 
     QObject::connect(check, &QCheckBox::clicked, [](bool checked) {
         ConfigHandler().setShowQuitPrompt(!checked);
@@ -656,17 +677,18 @@ void CaptureWidget::paintEvent(QPaintEvent* paintEvent)
         painter.setPen(uicolor);
         painter.setBrush(QBrush(uicolor));
 
-        auto topLeft = mapToGlobal(m_context.selection.topLeft());
+        const auto scale{ m_context.screenshot.devicePixelRatio() };
+        auto topLeft = mapToGlobal(m_context.selection.topLeft() / scale);
         topLeft.rx() -= topLeft.x() % m_gridSize;
         topLeft.ry() -= topLeft.y() % m_gridSize;
         topLeft = mapFromGlobal(topLeft);
 
-        const auto scale{ m_context.screenshot.devicePixelRatio() };
-        const auto step{ m_gridSize * scale };
+        const auto step{ m_gridSize / scale };
         const auto radius{ 1 * scale };
 
-        for (int y = topLeft.y(); y < m_context.selection.bottom(); y += step) {
-            for (int x = topLeft.x(); x < m_context.selection.right();
+        for (int y = topLeft.y(); y < m_context.selection.bottom() / scale;
+             y += step) {
+            for (int x = topLeft.x(); x < m_context.selection.right() / scale;
                  x += step) {
                 painter.drawEllipse(x, y, radius, radius);
             }
@@ -1195,6 +1217,10 @@ void CaptureWidget::initPanel()
             &SidePanelWidget::togglePanel,
             m_panel,
             &UtilityPanel::toggle);
+    connect(
+      m_sidePanel, &SidePanelWidget::showPanel, m_panel, &UtilityPanel::show);
+    connect(
+      m_sidePanel, &SidePanelWidget::hidePanel, m_panel, &UtilityPanel::hide);
     connect(m_sidePanel,
             &SidePanelWidget::displayGridChanged,
             this,
@@ -1562,6 +1588,9 @@ void CaptureWidget::initShortcuts()
     newShortcut(QKeySequence(ConfigHandler().shortcut("TYPE_TOGGLE_PANEL")),
                 this,
                 SLOT(togglePanel()));
+    newShortcut(QKeySequence(ConfigHandler().shortcut("TYPE_GRAB_COLOR")),
+                this,
+                SLOT(startColorGrab()));
 
     newShortcut(QKeySequence(ConfigHandler().shortcut("TYPE_RESIZE_LEFT")),
                 m_selection,
@@ -1802,10 +1831,8 @@ QPoint CaptureWidget::snapToGrid(const QPoint& point) const
 
     const auto scale{ m_context.screenshot.devicePixelRatio() };
 
-    snapPoint.setX((qRound(snapPoint.x() / double(m_gridSize)) * m_gridSize) *
-                   scale);
-    snapPoint.setY((qRound(snapPoint.y() / double(m_gridSize)) * m_gridSize) *
-                   scale);
+    snapPoint.setX((qRound(snapPoint.x() / double(m_gridSize)) * m_gridSize));
+    snapPoint.setY((qRound(snapPoint.y() / double(m_gridSize)) * m_gridSize));
 
     return mapFromGlobal(snapPoint);
 }

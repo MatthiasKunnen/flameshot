@@ -34,7 +34,7 @@
     <message>
         <location filename="../../src/tools/accept/accepttool.cpp" line="41"/>
         <source>Accept the capture</source>
-        <translation>Accept the capture</translation>
+        <translation>Приемане на заснетото</translation>
     </message>
 </context>
 <context>
@@ -60,12 +60,12 @@
     <message>
         <location filename="../../src/tools/launcher/applauncherwidget.cpp" line="78"/>
         <source>Launch in terminal</source>
-        <translation>Launch in terminal</translation>
+        <translation>Отваряне в терминал</translation>
     </message>
     <message>
         <location filename="../../src/tools/launcher/applauncherwidget.cpp" line="79"/>
         <source>Keep open after selection</source>
-        <translation>Keep open after selection</translation>
+        <translation>Оставяне работещо след избиране</translation>
     </message>
     <message>
         <location filename="../../src/tools/launcher/applauncherwidget.cpp" line="115"/>
@@ -76,12 +76,12 @@
     <message>
         <location filename="../../src/tools/launcher/applauncherwidget.cpp" line="148"/>
         <source>Unable to launch in terminal.</source>
-        <translation>Unable to launch in terminal.</translation>
+        <translation>Грешка при отваряне на терминал.</translation>
     </message>
     <message>
         <location filename="../../src/tools/launcher/applauncherwidget.cpp" line="115"/>
         <source>Unable to write in</source>
-        <translation>Unable to write in</translation>
+        <translation>Грешка при записване</translation>
     </message>
 </context>
 <context>
@@ -94,7 +94,7 @@
     <message>
         <location filename="../../src/tools/arrow/arrowtool.cpp" line="87"/>
         <source>Set the Arrow as the paint tool</source>
-        <translation>Set the Arrow as the paint tool</translation>
+        <translation>Избиране на инструмент „Стрелка“</translation>
     </message>
 </context>
 <context>
@@ -117,7 +117,7 @@
     <message>
         <location filename="../../src/widgets/capturelauncher.cpp" line="32"/>
         <source>Rectangular Region</source>
-        <translation>Rectangular Region</translation>
+        <translation>Правоъгълна област</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.cpp" line="38"/>
@@ -132,37 +132,37 @@
     <message>
         <location filename="../../src/widgets/capturelauncher.cpp" line="44"/>
         <source>No Delay</source>
-        <translation>No Delay</translation>
+        <translation>Без изчакване</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.cpp" line="52"/>
         <source> second</source>
-        <translation> second</translation>
+        <translation> секунда</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.ui" line="100"/>
         <location filename="../../build/src/flameshot_autogen/include/ui_capturelauncher.h" line="185"/>
         <location filename="../../src/widgets/capturelauncher.cpp" line="52"/>
         <source> seconds</source>
-        <translation> seconds</translation>
+        <translation> секунди</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.ui" line="165"/>
         <location filename="../../build/src/flameshot_autogen/include/ui_capturelauncher.h" line="186"/>
         <source>Take new screenshot</source>
-        <translation>Take new screenshot</translation>
+        <translation>Ново заснемане</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.ui" line="66"/>
         <location filename="../../build/src/flameshot_autogen/include/ui_capturelauncher.h" line="181"/>
         <source>Area:</source>
-        <translation>Area:</translation>
+        <translation>Област:</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.ui" line="14"/>
         <location filename="../../build/src/flameshot_autogen/include/ui_capturelauncher.h" line="178"/>
         <source>Capture Launcher</source>
-        <translation>Capture Launcher</translation>
+        <translation>Започване на заснемане</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.ui" line="34"/>
@@ -174,13 +174,13 @@
         <location filename="../../src/widgets/capturelauncher.ui" line="51"/>
         <location filename="../../build/src/flameshot_autogen/include/ui_capturelauncher.h" line="180"/>
         <source>Capture Mode</source>
-        <translation>Capture Mode</translation>
+        <translation>Режим на заснемане</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.ui" line="80"/>
         <location filename="../../build/src/flameshot_autogen/include/ui_capturelauncher.h" line="183"/>
         <source>Delay:</source>
-        <translation>Delay:</translation>
+        <translation>Изчакване:</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capturelauncher.ui" line="93"/>
@@ -195,17 +195,17 @@
         <location filename="../../src/widgets/capture/capturewidget.cpp" line="118"/>
         <source>Unable to capture screen</source>
         <translatorcomment>Impossible capturar la pantalla</translatorcomment>
-        <translation>Unable to capture screen</translation>
+        <translation>Грешка при заснемане на екрана</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capture/capturewidget.cpp" line="422"/>
         <source>Mouse</source>
-        <translation>Mouse</translation>
+        <translation>Мишка</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capture/capturewidget.cpp" line="422"/>
         <source>Select screenshot area</source>
-        <translation>Select screenshot area</translation>
+        <translation>Избиране на заснеманата област</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capture/capturewidget.cpp" line="436"/>
@@ -215,7 +215,7 @@
     <message>
         <location filename="../../src/widgets/capture/capturewidget.cpp" line="436"/>
         <source>Change tool size</source>
-        <translation>Change tool size</translation>
+        <translation>Промяна на размера на инструмента</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capture/capturewidget.cpp" line="437"/>
@@ -225,12 +225,12 @@
     <message>
         <location filename="../../src/widgets/capture/capturewidget.cpp" line="437"/>
         <source>Show color picker</source>
-        <translation>Show color picker</translation>
+        <translation>Показване на палитра</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capture/capturewidget.cpp" line="439"/>
         <source>Open side panel</source>
-        <translation>Open side panel</translation>
+        <translation>Отваряне на страничен панел</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capture/capturewidget.cpp" line="440"/>
@@ -245,17 +245,17 @@
     <message>
         <location filename="../../src/widgets/capture/capturewidget.cpp" line="482"/>
         <source>Quit Capture</source>
-        <translation type="unfinished"></translation>
+        <translation>Изход от заснемане</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capture/capturewidget.cpp" line="483"/>
         <source>Are you sure you want to quit capture?</source>
-        <translation type="unfinished"></translation>
+        <translation>Желаете ли да напуснете заснемането?</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capture/capturewidget.cpp" line="488"/>
         <source>Do not show this again</source>
-        <translation type="unfinished"></translation>
+        <translation>Без повторно показване</translation>
     </message>
     <message>
         <location filename="../../src/widgets/capture/capturewidget.cpp" line="683"/>
@@ -282,7 +282,7 @@ Press Space to open the side panel.</translation>
     <message>
         <location filename="../../src/widgets/capture/capturewidget.cpp" line="1122"/>
         <source>Tool Settings</source>
-        <translation>Tool Settings</translation>
+        <translation>Настройки на инструмента</translation>
     </message>
 </context>
 <context>
@@ -290,12 +290,12 @@ Press Space to open the side panel.</translation>
     <message>
         <location filename="../../src/tools/circlecount/circlecounttool.cpp" line="68"/>
         <source>Circle Counter</source>
-        <translation>Circle Counter</translation>
+        <translation>Номериране</translation>
     </message>
     <message>
         <location filename="../../src/tools/circlecount/circlecounttool.cpp" line="86"/>
         <source>Add an autoincrementing counter bubble</source>
-        <translation>Add an autoincrementing counter bubble</translation>
+        <translation>Добавяне на последователни числа в балонче</translation>
     </message>
 </context>
 <context>
@@ -303,12 +303,12 @@ Press Space to open the side panel.</translation>
     <message>
         <location filename="../../src/tools/circle/circletool.cpp" line="20"/>
         <source>Circle</source>
-        <translation>Circle</translation>
+        <translation>Окръжност</translation>
     </message>
     <message>
         <location filename="../../src/tools/circle/circletool.cpp" line="30"/>
         <source>Set the Circle as the paint tool</source>
-        <translation>Set the Circle as the paint tool</translation>
+        <translation>Избиране на инструмент „Окръжност“</translation>
     </message>
 </context>
 <context>
@@ -382,7 +382,7 @@ Press Space to open the side panel.</translation>
     <message>
         <location filename="../../src/widgets/panel/colorgrabwidget.cpp" line="58"/>
         <source>Accept color</source>
-        <translation>Accept color</translation>
+        <translation>Приемане на цвета</translation>
     </message>
     <message>
         <location filename="../../src/widgets/panel/colorgrabwidget.cpp" line="58"/>
@@ -392,7 +392,7 @@ Press Space to open the side panel.</translation>
     <message>
         <location filename="../../src/widgets/panel/colorgrabwidget.cpp" line="59"/>
         <source>Precisely select color</source>
-        <translation>Precisely select color</translation>
+        <translation>Избиране на точен цвят</translation>
     </message>
     <message>
         <location filename="../../src/widgets/panel/colorgrabwidget.cpp" line="59"/>
@@ -1042,12 +1042,12 @@ Please solve them manually in the configuration file.</translation>
     <message>
         <location filename="../../src/config/generalconf.cpp" line="277"/>
         <source>Use last region for GUI mode</source>
-        <translation type="unfinished">Use last region for GUI mode</translation>
+        <translation>Използване на последната област в графичен режим</translation>
     </message>
     <message>
         <location filename="../../src/config/generalconf.cpp" line="279"/>
         <source>Use the last region as the default selection for the next screenshot in GUI mode</source>
-        <translation type="unfinished">Use the last region as the default selection for the next screenshot in GUI mode</translation>
+        <translation>Използване на последната избрана област като начална за следващата снимка в графичен режим</translation>
     </message>
     <message>
         <location filename="../../src/config/generalconf.cpp" line="293"/>
@@ -1062,12 +1062,12 @@ Please solve them manually in the configuration file.</translation>
     <message>
         <location filename="../../src/config/generalconf.cpp" line="316"/>
         <source>Show abort notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Известия при прекратяване</translation>
     </message>
     <message>
         <location filename="../../src/config/generalconf.cpp" line="317"/>
         <source>Enable abort notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Включване на известия при прекратяване</translation>
     </message>
     <message>
         <location filename="../../src/config/generalconf.cpp" line="330"/>
@@ -1695,7 +1695,7 @@ Please solve them manually in the configuration file.</translation>
     <message>
         <location filename="../../src/tools/invert/inverttool.cpp" line="35"/>
         <source>Set Inverter as the paint tool</source>
-        <translation>Set Inverter as the paint tool</translation>
+        <translation>Избиране на инструмент „Негатив“</translation>
     </message>
 </context>
 <context>
@@ -1708,7 +1708,7 @@ Please solve them manually in the configuration file.</translation>
     <message>
         <location filename="../../src/tools/line/linetool.cpp" line="32"/>
         <source>Set the Line as the paint tool</source>
-        <translation>Set the Line as the paint tool</translation>
+        <translation>Избиране на инструмент „Линия“</translation>
     </message>
 </context>
 <context>
@@ -1721,7 +1721,7 @@ Please solve them manually in the configuration file.</translation>
     <message>
         <location filename="../../src/tools/marker/markertool.cpp" line="33"/>
         <source>Set the Marker as the paint tool</source>
-        <translation>Set the Marker as the paint tool</translation>
+        <translation>Избиране на инструмент „Маркер“</translation>
     </message>
 </context>
 <context>
@@ -1747,7 +1747,7 @@ Please solve them manually in the configuration file.</translation>
     <message>
         <location filename="../../src/tools/pencil/penciltool.cpp" line="28"/>
         <source>Set the Pencil as the paint tool</source>
-        <translation>Set the Pencil as the paint tool</translation>
+        <translation>Избиране на инструмент „Молив“</translation>
     </message>
 </context>
 <context>
@@ -1816,7 +1816,7 @@ Please solve them manually in the configuration file.</translation>
     <message>
         <location filename="../../src/tools/pixelate/pixelatetool.cpp" line="36"/>
         <source>Set Pixelate as the paint tool.</source>
-        <translation type="unfinished"></translation>
+        <translation>Избиране на инструмент „Размиване“</translation>
     </message>
     <message>
         <source>Set Pixelate as the paint tool</source>
@@ -1976,7 +1976,7 @@ Please solve them manually in the configuration file.</translation>
     <message>
         <location filename="../../src/main.cpp" line="236"/>
         <source>Set the filename pattern</source>
-        <translation>Set the filename pattern</translation>
+        <translation>Избиране на шаблон за име на файла</translation>
     </message>
     <message>
         <location filename="../../src/main.cpp" line="240"/>
@@ -2252,7 +2252,7 @@ You may need to escape the &apos;#&apos; sign as in &apos;\#FFF&apos;</translati
     <message>
         <location filename="../../src/tools/rectangle/rectangletool.cpp" line="32"/>
         <source>Set the Rectangle as the paint tool</source>
-        <translation>Set the Rectangle as the paint tool</translation>
+        <translation>Избиране на инструмент „Правоъгълник“</translation>
     </message>
 </context>
 <context>
@@ -2332,7 +2332,7 @@ You may need to escape the &apos;#&apos; sign as in &apos;\#FFF&apos;</translati
     <message>
         <location filename="../../src/tools/selection/selectiontool.cpp" line="35"/>
         <source>Set Selection as the paint tool</source>
-        <translation>Set Selection as the paint tool</translation>
+        <translation>Избиране на инструмент „Правоъгълна рамка“</translation>
     </message>
 </context>
 <context>
@@ -2350,12 +2350,12 @@ You may need to escape the &apos;#&apos; sign as in &apos;\#FFF&apos;</translati
     <message>
         <location filename="../../src/config/setshortcutwidget.cpp" line="38"/>
         <source>Press Esc to cancel or ⌘+Backspace to disable the keyboard shortcut.</source>
-        <translation>Press Esc to cancel or ⌘+Backspace to disable the keyboard shortcut.</translation>
+        <translation>Натиснете Esc за отказ или ⌘+Backspace за отмяна на клавишната комбинация.</translation>
     </message>
     <message>
         <location filename="../../src/config/setshortcutwidget.cpp" line="42"/>
         <source>Press Esc to cancel or Backspace to disable the keyboard shortcut.</source>
-        <translation>Press Esc to cancel or Backspace to disable the keyboard shortcut.</translation>
+        <translation>Натиснете Esc за отказ или Backspace за отмяна на клавишната комбинация.</translation>
     </message>
     <message>
         <location filename="../../src/config/setshortcutwidget.cpp" line="47"/>

@@ -130,7 +130,7 @@ void ShortcutsWidget::onShortcutCellClicked(int row, int col)
 
             // set no shortcut is Backspace
 #if defined(Q_OS_MACOS)
-            if (shortcutValue == QKeySequence(Qt::CTRL + Qt::Key_Backspace)) {
+            if (shortcutValue == QKeySequence(Qt::CTRL | Qt::Key_Backspace)) {
                 shortcutValue = QKeySequence("");
             }
 #else
@@ -167,6 +167,7 @@ void ShortcutsWidget::loadShortcuts()
 
     // additional tools that don't have their own buttons
     appendShortcut("TYPE_TOGGLE_PANEL", tr("Toggle side panel"));
+    appendShortcut("TYPE_GRAB_COLOR", tr("Grab a color from the screen"));
     appendShortcut("TYPE_RESIZE_LEFT", tr("Resize selection left 1px"));
     appendShortcut("TYPE_RESIZE_RIGHT", tr("Resize selection right 1px"));
     appendShortcut("TYPE_RESIZE_UP", tr("Resize selection up 1px"));
@@ -197,10 +198,15 @@ void ShortcutsWidget::loadShortcuts()
     // Global hotkeys
 #if defined(Q_OS_MACOS)
     appendShortcut("TAKE_SCREENSHOT", tr("Capture screen"));
+#ifdef ENABLE_IMGUR
     appendShortcut("SCREENSHOT_HISTORY", tr("Screenshot history"));
+#endif
 #elif defined(Q_OS_WIN)
+
+#ifdef ENABLE_IMGUR
     m_shortcuts << (QStringList() << "" << QObject::tr("Screenshot history")
                                   << "Shift+Print Screen");
+#endif
     m_shortcuts << (QStringList()
                     << "" << QObject::tr("Capture screen") << "Print Screen");
 #else

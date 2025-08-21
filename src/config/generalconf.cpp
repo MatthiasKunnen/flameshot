@@ -53,13 +53,16 @@ GeneralConf::GeneralConf(QWidget* parent)
     initCopyOnDoubleClick();
     initSaveAfterCopy();
     initCopyPathAfterSave();
+    initAntialiasingPinZoom();
+    initUndoLimit();
+    initInsecurePixelate();
+#ifdef ENABLE_IMGUR
     initCopyAndCloseAfterUpload();
     initUploadWithoutConfirmation();
     initHistoryConfirmationToDelete();
-    initAntialiasingPinZoom();
     initUploadHistoryMax();
-    initUndoLimit();
     initUploadClientSecret();
+#endif
     initPredefinedColorPaletteLarge();
     initShowSelectionGeometry();
 
@@ -82,15 +85,19 @@ void GeneralConf::_updateComponents(bool allowEmptySavePath)
     m_sysNotifications->setChecked(config.showDesktopNotification());
     m_abortNotifications->setChecked(config.showAbortNotification());
     m_autostart->setChecked(config.startupLaunch());
-    m_copyURLAfterUpload->setChecked(config.copyURLAfterUpload());
     m_saveAfterCopy->setChecked(config.saveAfterCopy());
     m_copyPathAfterSave->setChecked(config.copyPathAfterSave());
     m_antialiasingPinZoom->setChecked(config.antialiasingPinZoom());
     m_useJpgForClipboard->setChecked(config.useJpgForClipboard());
     m_copyOnDoubleClick->setChecked(config.copyOnDoubleClick());
+#ifdef ENABLE_IMGUR
     m_uploadWithoutConfirmation->setChecked(config.uploadWithoutConfirmation());
+    m_copyURLAfterUpload->setChecked(config.copyURLAfterUpload());
     m_historyConfirmationToDelete->setChecked(
       config.historyConfirmationToDelete());
+
+    m_uploadHistoryMax->setValue(config.uploadHistoryMax());
+#endif
 #if !defined(DISABLE_UPDATE_CHECKER)
     m_checkForUpdates->setChecked(config.checkForUpdates());
 #endif
@@ -109,7 +116,6 @@ void GeneralConf::_updateComponents(bool allowEmptySavePath)
     m_showStartupLaunchMessage->setChecked(config.showStartupLaunchMessage());
     m_showQuitPrompt->setChecked(config.showQuitPrompt());
     m_screenshotPathFixedCheck->setChecked(config.savePathFixed());
-    m_uploadHistoryMax->setValue(config.uploadHistoryMax());
     m_undoLimit->setValue(config.undoLimit());
 
     if (allowEmptySavePath || !config.savePath().isEmpty()) {
@@ -870,6 +876,20 @@ void GeneralConf::initReverseArrow()
       m_reverseArrow, &QCheckBox::clicked, this, &GeneralConf::setReverseArrow);
 }
 
+void GeneralConf::initInsecurePixelate()
+{
+    m_insecurePixelate = new QCheckBox(tr("Insecure Pixelate"), this);
+    m_insecurePixelate->setToolTip(
+      tr("Draw the pixelation effect in an insecure but more asethetic way."));
+    m_insecurePixelate->setChecked(ConfigHandler().insecurePixelate());
+    m_scrollAreaLayout->addWidget(m_insecurePixelate);
+
+    connect(m_insecurePixelate,
+            &QCheckBox::clicked,
+            this,
+            &GeneralConf::setInsecurePixelate);
+}
+
 void GeneralConf::setSelGeoHideTime(int v)
 {
     ConfigHandler().setValue("showSelectionGeometryHideTime", v);
@@ -904,4 +924,9 @@ void GeneralConf::useJpgForClipboardChanged(bool checked)
 void GeneralConf::setReverseArrow(bool checked)
 {
     ConfigHandler().setReverseArrow(checked);
+}
+
+void GeneralConf::setInsecurePixelate(bool checked)
+{
+    ConfigHandler().setInsecurePixelate(checked);
 }

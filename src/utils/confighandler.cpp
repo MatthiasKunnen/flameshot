@@ -136,6 +136,7 @@ static QMap<class QString, QSharedPointer<ValueHandler>>
     OPTION("showSelectionGeometryHideTime", LowerBoundedInt  ( 0, 3000       )),
     OPTION("jpegQuality"                 , BoundedInt        ( 0,100,75      )),
     OPTION("reverseArrow"                ,Bool               ( false         )),
+    OPTION("insecurePixelate"            ,Bool               ( false         )),
 };
 
 static QMap<QString, QSharedPointer<KeySequence>> recognizedShortcuts = {
@@ -154,7 +155,9 @@ static QMap<QString, QSharedPointer<KeySequence>> recognizedShortcuts = {
     SHORTCUT("TYPE_ACCEPT"              ,   "Return"                ),
     SHORTCUT("TYPE_EXIT"                ,   "Ctrl+Q"                ),
     SHORTCUT("TYPE_CANCEL"              ,   "Ctrl+Backspace"        ),
+#ifdef ENABLE_IMGUR
     SHORTCUT("TYPE_IMAGEUPLOADER"       ,                           ),
+#endif
 #if !defined(Q_OS_MACOS)
     SHORTCUT("TYPE_OPEN_APP"            ,   "Ctrl+O"                ),
 #endif
@@ -163,6 +166,7 @@ static QMap<QString, QSharedPointer<KeySequence>> recognizedShortcuts = {
     SHORTCUT("TYPE_REDO"                ,   "Ctrl+Shift+Z"          ),
     SHORTCUT("TYPE_TEXT"                ,   "T"                     ),
     SHORTCUT("TYPE_TOGGLE_PANEL"        ,   "Space"                 ),
+    SHORTCUT("TYPE_GRAB_COLOR"          ,   "G"                     ),
     SHORTCUT("TYPE_RESIZE_LEFT"         ,   "Shift+Left"            ),
     SHORTCUT("TYPE_RESIZE_RIGHT"        ,   "Shift+Right"           ),
     SHORTCUT("TYPE_RESIZE_UP"           ,   "Shift+Up"              ),
@@ -405,7 +409,7 @@ bool ConfigHandler::setShortcut(const QString& actionName,
     qDebug() << actionName;
     static QVector<QKeySequence> reservedShortcuts = {
 #if defined(Q_OS_MACOS)
-        Qt::CTRL + Qt::Key_Backspace,
+        Qt::CTRL | Qt::Key_Backspace,
         Qt::Key_Escape,
 #else
         Qt::Key_Backspace,

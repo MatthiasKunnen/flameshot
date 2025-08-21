@@ -1,13 +1,14 @@
 #
 # spec file for package flameshot on opensuse leap 15.x
 #
-Name: flameshot
-Version: 12.1.0
-Release: 1
+Name:    flameshot
+Version: 13.1.0
+Release: 2
 License: GPLv3+ and ASL 2.0 and GPLv2 and LGPLv3 and Free Art
 Summary: Powerful yet simple to use screenshot software
-URL: https://github.com/flameshot-org/flameshot
+URL:     https://github.com/flameshot-org/flameshot
 Source0: %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+Vendor:  Flameshot
 
 BuildRequires: cmake >= 3.13.0
 BuildRequires: gcc-c++ >= 7
@@ -16,20 +17,20 @@ BuildRequires: update-desktop-files
 BuildRequires: appstream-glib
 BuildRequires: desktop-file-utils
 
-BuildRequires: cmake(Qt5Core) >= 5.9.0
-BuildRequires: cmake(Qt5DBus) >= 5.9.0
-BuildRequires: cmake(Qt5Gui) >= 5.9.0
-BuildRequires: cmake(Qt5LinguistTools) >= 5.9.0
-BuildRequires: cmake(Qt5Network) >= 5.9.0
-BuildRequires: cmake(Qt5Svg) >= 5.9.0
-BuildRequires: cmake(Qt5Widgets) >= 5.9.0
-
+BuildRequires: cmake(Qt6Core) >= 6.0.0
+BuildRequires: cmake(Qt6DBus) >= 6.0.0
+BuildRequires: cmake(Qt6Gui) >= 6.0.0
+BuildRequires: cmake(Qt6LinguistTools) >= 6.0.0
+BuildRequires: cmake(Qt6Network) >= 6.0.0
+BuildRequires: cmake(Qt6Svg) >= 6.0.0
+BuildRequires: cmake(Qt6Widgets) >= 6.0.0
 
 Requires: hicolor-icon-theme
-Requires: libQt5Core5 >= 5.9.0
-Requires: libqt5-qttools >= 5.9.0
-Requires: libQt5Svg5 >= 5.9.0
+Requires: qt6-base >= 6.0.0
+Requires: qt6-tools >= 6.0.0
+Requires: qt6-svg >= 6.0.0
 
+Recommends: qt6-imageformats
 Recommends: xdg-desktop-portal%{?_isa}
 Recommends: (xdg-desktop-portal-gnome%{?_isa} if gnome-shell%{?_isa})
 Recommends: (xdg-desktop-portal-kde%{?_isa} if plasma-workspace-wayland%{?_isa})
@@ -45,13 +46,12 @@ Features:
  * Easy to use.
  * In-app screenshot edition.
  * DBus interface.
- * Upload to Imgur
 
 %prep
 %autosetup -p1
 
 %build
-%cmake -DCMAKE_BUILD_TYPE=Release -DQTCOLORWIDGETS_INSTALL=OFF
+%cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS:BOOL=OFF
 
 %cmake_build
 
@@ -61,6 +61,9 @@ rm -rf %{buildroot}%{_includedir}/QtColorWidgets
 rm -rf %{buildroot}%{_libdir}/cmake/QtColorWidgets
 rm -f %{buildroot}%{_libdir}/libQtColorWidgets.*
 rm -f %{buildroot}%{_libdir}/pkgconfig/QtColorWidgets.pc
+rm -rf %{buildroot}%{_includedir}/kdsingleapplication-qt6
+rm -rf %{buildroot}%{_libdir}/cmake/KDSingleApplication-qt6
+rm -f %{buildroot}%{_libdir}/libkdsingleapplication-qt6.*
 # https://fedoraproject.org/wiki/PackagingDrafts/find_lang
 %find_lang Internationalization --with-qt
 %suse_update_desktop_file -r org.flameshot.Flameshot Utility X-SuSE-DesktopUtility
@@ -91,6 +94,27 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 %{_mandir}/man1/%{name}.1*
 
 %changelog
+* Sat Aug 16 2025 Elliott Tallis <tallis.elliott@gmail.com> - 13.1.0-2
+- Minor spec file tweaks
+
+* Sun Aug 15 2025 Jeremy Borgman <borgman.jeremy@pm.me> - 13.1.0
+- Update for v13.1.0 release
+
+* Sun Aug 06 2025 Jeremy Borgman <borgman.jeremy@pm.me> - 13.0.1
+- Update for v13.0.1 release
+
+* Sun Aug 03 2025 Jeremy Borgman <borgman.jeremy@pm.me> - 13.0.0
+- Update for v13 release
+
+* Sun Jul 27 2025 Jeremy Borgman <borgman.jeremy@pm.me> - 13.0.rc2
+- Beta for 13 release.
+
+* Sun Jul 12 2025 Jeremy Borgman <borgman.jeremy@pm.me> - 13.0.rc1
+- Beta for 13 release.
+
+* Sun Jul 03 2022 Jeremy Borgman <borgman.jeremy@pm.me> - 12.1.0-1
+- Update for 12.1 release.
+
 * Wed Jun 21 2022 Jeremy Borgman <borgman.jeremy@pm.me> - 12.0.0-1
 - Update for 12.0 release.
 

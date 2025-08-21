@@ -225,6 +225,7 @@ These shortcuts are available in GUI mode:
 | <kbd>Ctrl</kbd> + <kbd>Backspace</kbd>                                    | Cancel current selection                                       | 
 | <kbd>Return</kbd>                                             | Upload the selection to Imgur                                      |
 | <kbd>Spacebar</kbd>                                                       | Toggle visibility of sidebar with options of the selected tool, color picker for the drawing color and history menu |
+| <kbd>G</kbd>                                                       | Starts the color picker |
 | Right Click                                                               | Show the color wheel                                              |
 | Mouse Wheel                                                               | Change the tool's thickness                                    |
 | <kbd>Print screen</kbd>                                          | Capture Screen |
@@ -377,6 +378,10 @@ follow the steps below:
 1. Right-Click on "flameshot.app" and choose "Open" from the context menu
 2. In the dialog click "Open"
 
+On MacOs 15 and above, you will have to go to system settings -> privacy and security after doing this and click "Open Anyway" or you can open flameshot first time with the following command.
+
+```sudo xattr -rd com.apple.quarantine /Applications/flameshot.app```
+
 After following all those steps above, `flameshot` will open without problems in your Mac.
 
 ### Windows
@@ -409,7 +414,7 @@ Also you can open and build/debug the project in a C++ IDE. For example, in Qt C
 
 #### Compile-time
 
-- Qt >= 5.9
+- Qt >= 6.0
   + Development tools
 - GCC >= 7.4
 - CMake >= 3.29
@@ -424,44 +429,45 @@ Also you can open and build/debug the project in a C++ IDE. For example, in Qt C
 - Git
 - OpenSSL
 - CA Certificates
+- Qt Image Formats - for additional export image formats (e.g. tiff, webp, and more)
 
 #### Debian
 
 ```shell
 # Compile-time
-apt install g++ cmake build-essential qtbase5-dev qttools5-dev-tools libqt5svg5-dev qttools5-dev
+apt install g++ cmake build-essential qt6-base-dev qt6-tools-dev-tools qt6-svg-dev qt6-tools-dev
 
 # Run-time
-apt install libqt5dbus5 libqt5network5 libqt5core5a libqt5widgets5 libqt5gui5 libqt5svg5
+apt install libqt6dbus6 libqt6network6 libqt6core6 libqt6widgets6 libqt6gui6 libqt6svg6 qt6-qpa-plugins
 
 # Optional
-apt install git openssl ca-certificates
+apt install git openssl ca-certificates qt6-image-formats-plugins
 ```
 
 #### Fedora
 
 ```shell
 # Compile-time
-dnf install gcc-c++ cmake qt5-qtbase-devel qt5-linguist
+dnf install gcc-c++ cmake qt6-qtbase-devel qt6-qtsvg-devel qt6-qttools qt6-linguist qt6-qttools-devel kf6-kguiaddons-devel
 
 # Run-time
-dnf install qt5-qtbase qt5-qtsvg-devel
+dnf install qt6-qtbase qt6-qtsvg kf6-kguiaddons
 
 # Optional
-dnf install git openssl ca-certificates
+dnf install git openssl ca-certificates qt6-qtimageformats
 ```
 
 #### Arch
 
 ```shell
 # Compile-time
-pacman -S cmake base-devel git qt5-base qt5-tools
+pacman -S cmake base-devel git qt6-base qt6-tools kguiaddons
 
 # Run-time
-pacman -S qt5-svg
+pacman -S qt6-svg
 
 # Optional
-pacman -S openssl ca-certificates
+pacman -S openssl ca-certificates qt6-imageformats
 ```
 
 #### NixOS
@@ -474,7 +480,7 @@ nix-shell
 
 First of all you need to install [brew](https://brew.sh) and then install the dependencies
 ```shell
-brew install qt5
+brew install qt6
 brew install cmake
 ```
 
@@ -503,7 +509,7 @@ cmake -S . -B "$BUILD_DIR" \
 
 #MacOS
 cmake -S . -B "$BUILD_DIR" \
-    -DQt5_DIR="$(brew --prefix qt5)/lib/cmake/Qt5" \
+    -DQt6_DIR="$(brew --prefix qt6)/lib/cmake/Qt6" \
     && cmake --build "$BUILD_DIR"
 ```
 
